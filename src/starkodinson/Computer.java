@@ -1,7 +1,7 @@
 package starkodinson;
 
 public class Computer extends Player {
-    public Computer(String name) {
+    public Computer() {
         super("Computer");
     }
 

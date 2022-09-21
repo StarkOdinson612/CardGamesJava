@@ -94,4 +94,8 @@ public class Deck {
         return returnString;
     }
 
+    public Card nextCard()
+    {
+        return deck.pop();
+    }
 }
