@@ -1,13 +1,20 @@
 package starkodinson;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.util.stream.Collectors;
 
 public class BlackJack {
 
     public static void main(String[] args) throws InterruptedException, IOException {
-	// write your code here
+        new BlackJackGUI();
+
         boolean isPlaying = true;
         Computer computer = new Computer();
         Scanner s = new Scanner(System.in);
@@ -215,4 +222,52 @@ public class BlackJack {
             }
         }
     }
+
+    static class BlackJackGUI
+    {
+        JButton startButton;
+        JTextField usernameField;
+
+        public BlackJackGUI()
+        {
+            SwingUtilities.invokeLater(() -> {
+                JFrame frame = new JFrame("Test");
+                frame.add(new MenuPane());
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            });
+        }
+
+        public static class MenuPane extends JPanel
+        {
+            public MenuPane() {
+                setBorder(new EmptyBorder(10, 10, 10, 10));
+                setLayout(new GridBagLayout());
+
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.gridwidth = GridBagConstraints.REMAINDER;
+                gbc.anchor = GridBagConstraints.NORTH;
+
+                add(new JLabel("<html><h1><strong><i>BlackJack Online™ (Offline Edition)</i></strong></h1><hr></html>"), gbc);
+
+                gbc.anchor = GridBagConstraints.CENTER;
+                gbc.fill = GridBagConstraints.HORIZONTAL;
+
+
+                JPanel buttons = new JPanel(new GridBagLayout());
+                buttons.add(new JLabel("Username: "));
+                buttons.add(new JTextField(), gbc);
+                buttons.add(new JButton("Start"), gbc);
+                buttons.add(new JButton("Show scores"), gbc);
+                buttons.add(new JButton("Help"), gbc);
+                buttons.add(new JButton("Exit"), gbc);
+
+                gbc.weighty = 1;
+                add(buttons, gbc);
+            }
+        }
+    }
 }
+
+
