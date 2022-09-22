@@ -16,4 +16,9 @@ public class Computer extends Player {
             return "Stay";
         }
     }
+
+    public String getLastCard()
+    {
+        return thisHand.get(thisHand.size() - 1).toString();
+    }
 }
