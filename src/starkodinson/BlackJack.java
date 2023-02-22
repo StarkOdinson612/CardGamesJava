@@ -1,14 +1,8 @@
 package starkodinson;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
-import java.util.stream.Collectors;
 
 public class BlackJack {
 
@@ -166,15 +160,13 @@ public class BlackJack {
             if (cVal <= 21)
             {
                 System.out.println("You bust! Computer wins!");
-                printHands(p, c);
-                return false;
             }
             else
             {
                 System.out.println("You both bust! Dealer wins!");
-                printHands(p, c);
-                return false;
             }
+            printHands(p, c);
+            return false;
 
         }
         else if (pVal == 21)
