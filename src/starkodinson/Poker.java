@@ -8,17 +8,14 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class Poker {
-    public static void playPoker(Scanner s) throws InterruptedException {
+    public static void playPoker(Scanner s, String username) throws InterruptedException {
         boolean isPlaying = true;
 
         int count = 0;
         int winCount = 0;
         int drawCount = 0;
 
-        System.out.print("Enter username here: ");
-        String username = s.nextLine();
         Player p = new Player(username);
-        System.out.println("Hello " + username + "! Welcome to PokerOnline™ (offline edition)!\n");
 
         Computer c = new Computer(Computer.GameType.POKER);
 
@@ -95,6 +92,10 @@ public class Poker {
                 System.out.printf("Final Score(W/D/L): %d / %d / %d\nThanks for playing!", winCount, drawCount, count-winCount-drawCount);
                 isPlaying = false;
                 TimeUnit.SECONDS.sleep(5);
+                for (int i = 0; i < 50; i++)
+                {
+                    System.out.print("\n");
+                }
 //                Runtime.getRuntime().exec("cls");
             }
         }

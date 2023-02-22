@@ -6,14 +6,11 @@ import java.util.concurrent.TimeUnit;
 
 public class BlackJack {
 
-    public static void playBlackJack(Scanner s) throws InterruptedException, IOException {
+    public static void playBlackJack(Scanner s, String username) throws InterruptedException, IOException {
 
         boolean isPlaying = true;
         Computer computer = new Computer(Computer.GameType.BLACKJACK);
-        System.out.print("Enter username here: ");
-        String username = s.nextLine();
         Player player = new Player(username);
-        System.out.println("Hello " + username + "! Welcome to BlackJackOnline™ (offline edition)!\n");
         int count = 0;
         int winCount = 0;
 
@@ -137,6 +134,9 @@ public class BlackJack {
                 System.out.println("Thanks for playing!");
                 isPlaying = false;
                 TimeUnit.SECONDS.sleep(5);
+                for (int i = 0; i < 50; i++) {
+                    System.out.print("\n");
+                }
 //                Runtime.getRuntime().exec("cls");
             }
         }
