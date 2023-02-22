@@ -1,16 +1,13 @@
 package starkodinson;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class GameManager {
-    private Deck deck;
-    private Player human;
-    private Computer computer;
-
-
-    public GameManager()
-    {
-        this.deck = new Deck();
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        Poker.playPoker(scanner);
     }
 
 

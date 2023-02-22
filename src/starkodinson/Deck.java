@@ -14,7 +14,7 @@ public class Deck {
 
         for (int i = 1; i <= 4; i++)
         {
-            for (int j = 1; j <= 13; j++)
+            for (int j = 2; j <= 14; j++)
             {
                 deck.push(new Card(i, j));
             }
@@ -76,6 +76,18 @@ public class Deck {
         else if (right.isEmpty() && !left.isEmpty())
         {
             deck.addAll(left);
+        }
+    }
+
+    public static void dealCards(Player p, Computer c, Deck d, int n)
+    {
+        p.clearHand();
+        c.clearHand();
+
+        for (int i = 0; i < n; i++)
+        {
+            p.addCard(d.nextCard());
+            c.addCard(d.nextCard());
         }
     }
 

@@ -12,12 +12,10 @@ import java.util.stream.Collectors;
 
 public class BlackJack {
 
-    public static void main(String[] args) throws InterruptedException, IOException {
-        new BlackJackGUI();
+    public static void playBlackJack(Scanner s) throws InterruptedException, IOException {
 
         boolean isPlaying = true;
-        Computer computer = new Computer();
-        Scanner s = new Scanner(System.in);
+        Computer computer = new Computer(Computer.GameType.BLACKJACK);
         System.out.print("Enter username here: ");
         String username = s.nextLine();
         Player player = new Player(username);
@@ -223,51 +221,51 @@ public class BlackJack {
         }
     }
 
-    static class BlackJackGUI
-    {
-        JButton startButton;
-        JTextField usernameField;
-
-        public BlackJackGUI()
-        {
-            SwingUtilities.invokeLater(() -> {
-                JFrame frame = new JFrame("Test");
-                frame.add(new MenuPane());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-            });
-        }
-
-        public static class MenuPane extends JPanel
-        {
-            public MenuPane() {
-                setBorder(new EmptyBorder(10, 10, 10, 10));
-                setLayout(new GridBagLayout());
-
-                GridBagConstraints gbc = new GridBagConstraints();
-                gbc.gridwidth = GridBagConstraints.REMAINDER;
-                gbc.anchor = GridBagConstraints.NORTH;
-
-                add(new JLabel("<html><h1><strong><i>BlackJack Online™ (Offline Edition)</i></strong></h1><hr></html>"), gbc);
-
-                gbc.anchor = GridBagConstraints.CENTER;
-                gbc.fill = GridBagConstraints.HORIZONTAL;
-
-
-                JPanel buttons = new JPanel(new GridBagLayout());
-                buttons.add(new JLabel("Username: "));
-                buttons.add(new JTextField(), gbc);
-                buttons.add(new JButton("Start"), gbc);
-                buttons.add(new JButton("Show scores"), gbc);
-                buttons.add(new JButton("Help"), gbc);
-                buttons.add(new JButton("Exit"), gbc);
-
-                gbc.weighty = 1;
-                add(buttons, gbc);
-            }
-        }
-    }
+//    static class BlackJackGUI
+//    {
+//        JButton startButton;
+//        JTextField usernameField;
+//
+//        public BlackJackGUI()
+//        {
+//            SwingUtilities.invokeLater(() -> {
+//                JFrame frame = new JFrame("Test");
+//                frame.add(new MenuPane());
+//                frame.pack();
+//                frame.setLocationRelativeTo(null);
+//                frame.setVisible(true);
+//            });
+//        }
+//
+//        public static class MenuPane extends JPanel
+//        {
+//            public MenuPane() {
+//                setBorder(new EmptyBorder(10, 10, 10, 10));
+//                setLayout(new GridBagLayout());
+//
+//                GridBagConstraints gbc = new GridBagConstraints();
+//                gbc.gridwidth = GridBagConstraints.REMAINDER;
+//                gbc.anchor = GridBagConstraints.NORTH;
+//
+//                add(new JLabel("<html><h1><strong><i>BlackJack Online™ (Offline Edition)</i></strong></h1><hr></html>"), gbc);
+//
+//                gbc.anchor = GridBagConstraints.CENTER;
+//                gbc.fill = GridBagConstraints.HORIZONTAL;
+//
+//
+//                JPanel buttons = new JPanel(new GridBagLayout());
+//                buttons.add(new JLabel("Username: "));
+//                buttons.add(new JTextField(), gbc);
+//                buttons.add(new JButton("Start"), gbc);
+//                buttons.add(new JButton("Show scores"), gbc);
+//                buttons.add(new JButton("Help"), gbc);
+//                buttons.add(new JButton("Exit"), gbc);
+//
+//                gbc.weighty = 1;
+//                add(buttons, gbc);
+//            }
+//        }
+//    }
 }
 
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Card {
+public class Card implements Comparable {
     private int suit;
     private int value;
     private static final HashMap<Integer, String> suitStringMap = (HashMap<Integer, String>) Stream.of(new String[][] {
@@ -15,7 +15,7 @@ public class Card {
     }).collect(Collectors.toMap(data -> Integer.parseInt(data[0]), data -> data[1]));
 
     private static final HashMap<Integer, String> pictureStringMap = (HashMap<Integer, String>) Stream.of(new String[][] {
-        {"1", "A"},
+        {"14", "A"},
         {"11", "J"},
         {"12", "Q"},
         {"13", "K"}
@@ -35,6 +35,12 @@ public class Card {
 
     public int[] getDetails() { return new int[]{suit, value}; }
 
+    public int getSuit() { return suit; }
+
+    public int getValue() {
+        return value;
+    }
+
     public static String suitConverter(int s)
     {
         return suitStringMap.get(s);
@@ -50,5 +56,14 @@ public class Card {
         {
             return String.valueOf(v);
         }
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        int thisVal = this.getDetails()[1];
+        int otherVal = ((Card)o).getDetails()[1];
+
+        return thisVal - otherVal;
     }
 }
